@@ -1,0 +1,74 @@
+﻿<Window x:Class="ITT_sys.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ITT_sys.ViewModels"
+        mc:Ignorable="d"
+        Title="ShellView" Height="550" Width="550" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Style="{StaticResource loginWindow}">
+    <Window.DataContext>
+        <local:ShellViewModel/>
+    </Window.DataContext>
+    <Border  Opacity=".85" Background="#FF2F324F">
+        <Grid HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+            <!--sign in label-->
+            <TextBlock Grid.Row="1" Style="{StaticResource TitleControlStyle}" >SIGN IN</TextBlock>
+
+            <!--user name
+            <TextBlock Grid.Row="2" Style="{StaticResource LabelControlStyle}">USERNAME</TextBlock>
+            <TextBox Text="{Binding Username,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"
+                       ToolTip="{Binding ErrorCollection}"
+                      Grid.Row="3" Name="UserNametxt" Style="{StaticResource InputControlStyle}">
+            </TextBox>-->
+            
+            
+            <TextBox Text="{Binding Username,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"
+                       Grid.Row="3" Name="UserNametxt" Style="{StaticResource InputControlStyle}">
+                <TextBox.ToolTip>
+                    <ToolTip DataContext="{Binding Path=PlacementTarget, RelativeSource={x:Static RelativeSource.Self}}">
+                        <StackPanel>
+                            <Label FontWeight="Bold" Content="Full Text"/>
+                            <Label Content="{Binding Text}"/>
+                        </StackPanel>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+
+            <!--Email-->
+            <TextBlock Grid.Row="4" Style="{StaticResource LabelControlStyle}">EMAIL</TextBlock>
+            <TextBox Grid.Row="5" Name="EmailTxt" Style="{StaticResource InputControlStyle}"></TextBox>
+
+            <!-- password and confirm password-->
+            <TextBlock Grid.Row="6" Style="{StaticResource LabelControlStyle}">PASSWORD</TextBlock>
+            <PasswordBox Grid.Row="7" Name="PasswordTxt" Style="{StaticResource InputControlStyle}"></PasswordBox>
+
+            <TextBlock Grid.Row="8" Style="{StaticResource LabelControlStyle}">CONFIRM PASSWORD</TextBlock>
+            <PasswordBox Grid.Row="9" Name="ConfirmpwdTxt" Style="{StaticResource InputControlStyle}"></PasswordBox>
+
+            <!--log in button-->
+            <Button Grid.Row="10" Name="btnSign_in" Style="{StaticResource SignButtonStyle}">SIGN IN</Button>
+
+
+
+        </Grid>
+    </Border>
+</Window>
